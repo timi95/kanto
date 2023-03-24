@@ -1,12 +1,22 @@
 <ul>
-    <li *ngFor="let pokemon of (kanto | async)?.results; index as i">
-        <div 
+    <li class="thecard"
+    *ngFor="let pokemon of (kanto | async)?.results; index as i">
+        <div class="thefront"
             (click)="navigateDetail('/pokemon/{{i+1}}', { 
                 url:pokemon.url, 
                 imageUrl: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/'+pad(i+1)+'.png'
             })">
             <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/{{pad(i+1)}}.png" alt="">
-            <h3>{{pokemon.name}}</h3>
+        </div>
+        <div class="theback"
+            (click)="navigateDetail('/pokemon/{{i+1}}', { 
+                url:pokemon.url, 
+                imageUrl: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/'+pad(i+1)+'.png'
+            })">
+            <img 
+            style="max-width: 100px;"
+            src="https://purepng.com/public/uploads/large/purepng.com-pokeballpokeballdevicepokemon-ballpokemon-capture-ball-1701527825789urzm0.png" alt="">
+            <h2>#{{i}}:{{pokemon.name}}</h2>
         </div>
     </li>
 </ul>
