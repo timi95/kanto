@@ -1,14 +1,35 @@
 <div class="container">
     <img src="{{data?.imageUrl}}">
-    <!-- <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/{{data?.imageUrl}}.png"> -->
     <h2>{{details?.name|uppercase}}</h2>
-    <!-- <div>
-        <strong>Types:</strong> <br>
-        <span *ngFor="let type of pokemon?.types">
-            {{type?.name}}
-        </span>
-    </div>
     <div>
-        <strong>Stats:</strong> <br>
-    </div> -->
+        <strong>Types:</strong> 
+        <br> <br>
+            <span class="types" *ngFor="let type of types">
+                {{type.type.name}}
+            </span>
+    </div>
+    <br> <br>
+    <div class="proportions">
+        <div class="proportion-container">
+            <h2>{{details?.weight}}</h2>
+            <strong>Weight:</strong>
+        </div>
+        <div class="proportion-container">
+            <h2>{{details?.height}}</h2>
+            <strong>Height:</strong>
+        </div>
+    </div>
+    <br> <br>
+    <div class="stats">
+        <h2>Stats:</h2>
+        <div *ngFor="let st of details?.stats">
+            {{st.stat.name|uppercase}}:
+            <input 
+                type="range"
+                value="{{st.base_stat}}"
+                max="200" disabled>
+            
+        </div>
+     
+    </div>
 </div>

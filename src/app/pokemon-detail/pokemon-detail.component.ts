@@ -18,6 +18,7 @@ export class PokemonDetailComponent implements OnInit {
   };
   details:any | undefined;
   browserRefresh: boolean | undefined;
+  types:any[]=[];
   constructor( 
     private httpClient: HttpClient,
     private utility: UtilityService ) { }
@@ -31,6 +32,10 @@ export class PokemonDetailComponent implements OnInit {
      this.details=JSON.parse(
       window.localStorage.getItem('pokemonDetails') as string
      );
+     this.details?.types.forEach((_t: any)=>{
+      this.types.push(_t);
+    })
+     console.log(this.types, ' - types');
     } else { //initial setup
       this.data=this.utility.Pokemon;
       this.httpClient.get(this.data.url)
@@ -39,6 +44,11 @@ export class PokemonDetailComponent implements OnInit {
         window.localStorage.setItem('pokemonUrlData',JSON.stringify(this.data))
         this.details=resp;
       });
+      this.details?.types.forEach((_t: any)=>{
+        this.types.push(_t);
+      })
+      console.log(this.types, ' - types');
+      
     }      
     
   }
