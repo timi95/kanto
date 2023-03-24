@@ -1,0 +1,23 @@
+ul{
+    display: flex;
+    flex-flow: row wrap;
+    height: 90vh;
+    overflow-y: auto;
+    li{
+        text-align: center;
+        list-style: none;
+        cursor: pointer;
+        margin: 10px;
+        padding: 10px;
+        border: 1px solid gray;
+        border-radius: 15px;
+        // width: 45%;
+        div{
+            img{
+                max-width: 200px;
+                width: 100%;
+                height: auto;
+            }
+        }
+    }
+}
