@@ -1,5 +1,9 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, NavigationStart, Route, Router } from '@angular/router';
+import { filter, Observable } from 'rxjs';
+import { UtilityService } from 'src/services/utility.service';
+import { browserRefresh } from '../app.component';
 
 @Component({
   selector: 'app-pokemon-detail',
@@ -8,13 +12,35 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class PokemonDetailComponent implements OnInit {
 
-  constructor( private route: ActivatedRoute) { }
+  data:{ url: string, imageUrl: string }={
+    url:'',
+    imageUrl:''
+  };
+  details:any | undefined;
+  browserRefresh: boolean | undefined;
+  constructor( 
+    private httpClient: HttpClient,
+    private utility: UtilityService ) { }
 
   ngOnInit(): void {
+    this.browserRefresh = browserRefresh;
+    if(this.browserRefresh) {//on browser refresh
+      this.data=JSON.parse(
+       window.localStorage.getItem('pokemonUrlData') as string
+     );
+     this.details=JSON.parse(
+      window.localStorage.getItem('pokemonDetails') as string
+     );
+    } else { //initial setup
+      this.data=this.utility.Pokemon;
+      this.httpClient.get(this.data.url)
+      .subscribe(resp=>{
+        window.localStorage.setItem('pokemonDetails',JSON.stringify(resp))
+        window.localStorage.setItem('pokemonUrlData',JSON.stringify(this.data))
+        this.details=resp;
+      });
+    }      
+    
   }
 
-  getRouteId(){
-    const routeParam = this.route.snapshot.paramMap;
-    return routeParam.get('pokemonId');
-  }
 }

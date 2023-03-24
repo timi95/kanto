@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, Subscribable } from 'rxjs';
 import { UtilityService } from 'src/services/utility.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -13,24 +14,28 @@ export class HomeComponent implements OnInit {
   generation:number=151;
   httpOptions: { headers: HttpHeaders; };
     
-  constructor(private httpClient: HttpClient) {
-      this.httpOptions = {
-        headers: new HttpHeaders({'Content-Type': 'application/json'})
-      };
-    }
-    
-    ngOnInit(): void {
-      this.kanto = this.httpClient
-      .get(`https://pokeapi.co/api/v2/pokemon?limit=${this.generation}&offset=0`);
-    }
-    
-    
-    pad(arg: number) {
+  constructor(private httpClient: HttpClient, private router: Router, private utility: UtilityService) {
+    this.httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/json'})
+    };
+  }
+  
+  ngOnInit(): void {
+    this.kanto = this.httpClient
+    .get(`https://pokeapi.co/api/v2/pokemon?limit=${this.generation}&offset=0`);
+  }
+  
+  
+  pad(arg: number) {
       var str = "" + arg
       var pad = "000"
       var ans = pad.substring(0, pad.length - str.length) + str
       return ans;
     }
-                     
+    
+    navigateDetail(str: string, pokemonData:Object) {
+      this.utility.setPokemon(pokemonData);
+      this.router.navigate([str]);
+    }
   }
   

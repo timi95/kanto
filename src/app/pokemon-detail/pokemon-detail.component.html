@@ -1,1 +1,14 @@
-<p>pokemon-detail works!</p>
+<div class="container">
+    <img src="{{data?.imageUrl}}">
+    <!-- <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/{{data?.imageUrl}}.png"> -->
+    <h2>{{details?.name|uppercase}}</h2>
+    <!-- <div>
+        <strong>Types:</strong> <br>
+        <span *ngFor="let type of pokemon?.types">
+            {{type?.name}}
+        </span>
+    </div>
+    <div>
+        <strong>Stats:</strong> <br>
+    </div> -->
+</div>

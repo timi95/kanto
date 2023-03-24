@@ -1,6 +1,10 @@
 <ul>
     <li *ngFor="let pokemon of (kanto | async)?.results; index as i">
-        <div routerLink="/pokemon/{{i+1}}">
+        <div 
+            (click)="navigateDetail('/pokemon/{{i+1}}', { 
+                url:pokemon.url, 
+                imageUrl: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/'+pad(i+1)+'.png'
+            })">
             <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/{{pad(i+1)}}.png" alt="">
             <h3>{{pokemon.name}}</h3>
         </div>
