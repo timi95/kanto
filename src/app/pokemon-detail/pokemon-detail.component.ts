@@ -43,10 +43,10 @@ export class PokemonDetailComponent implements OnInit {
         window.localStorage.setItem('pokemonDetails',JSON.stringify(resp))
         window.localStorage.setItem('pokemonUrlData',JSON.stringify(this.data))
         this.details=resp;
+        this.details?.types.forEach((_t: any)=>{
+          this.types.push(_t);
+        })
       });
-      this.details?.types.forEach((_t: any)=>{
-        this.types.push(_t);
-      })
       console.log(this.types, ' - types');
       
     }      
