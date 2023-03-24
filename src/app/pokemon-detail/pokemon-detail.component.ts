@@ -35,7 +35,6 @@ export class PokemonDetailComponent implements OnInit {
      this.details?.types.forEach((_t: any)=>{
       this.types.push(_t);
     })
-     console.log(this.types, ' - types');
     } else { //initial setup
       this.data=this.utility.Pokemon;
       this.httpClient.get(this.data.url)
@@ -46,9 +45,7 @@ export class PokemonDetailComponent implements OnInit {
         this.details?.types.forEach((_t: any)=>{
           this.types.push(_t);
         })
-      });
-      console.log(this.types, ' - types');
-      
+      });      
     }      
     
   }
