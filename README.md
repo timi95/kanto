@@ -1,6 +1,6 @@
 # Kanto
 
-(Deployed site)[https://elegant-vacherin-f6957d.netlify.app]
+View deployment at this [Site](https://elegant-vacherin-f6957d.netlify.app)
 
 
 # Generated information
