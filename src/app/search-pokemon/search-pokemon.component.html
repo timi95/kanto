@@ -1,0 +1,14 @@
+<input 
+type="search" 
+name="search" 
+id="searchPokemon" 
+(submit)="searchPokemon($event)">
+
+<div *ngIf="isSuggesting">
+    Suggesting...
+    <ul>
+        <li *ngFor="let sug of suggestions" 
+        (click)="navigateDetail(sug?.name, sug)"></li>
+    </ul>
+
+</div>

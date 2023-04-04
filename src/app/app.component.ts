@@ -10,14 +10,14 @@ export let browserRefresh = false;
 })
 export class AppComponent {
   title = 'kanto';
-
+  
   subscription: Subscription;
-
+  
   constructor(private router: Router) {
     this.subscription = router.events.subscribe((event) => {
-        if (event instanceof NavigationStart) {
-          browserRefresh = !router.navigated;
-        }
+      if (event instanceof NavigationStart) {
+        browserRefresh = !router.navigated;
+      }
     });
   }
 }
