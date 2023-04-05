@@ -41,7 +41,7 @@ export class HomeComponent implements OnInit {
   }
   
   
-  pad(arg: number) {
+    pad(arg: number) {
       var str = "" + arg
       var pad = "000"
       var ans = pad.substring(0, pad.length - str.length) + str

@@ -6,13 +6,20 @@ placeholder="Search Pokemon"
 #input>
 
 <div class="suggestion-container" *ngIf="isSuggesting">
-    Suggesting...
+    <!-- Suggesting...s -->
     <ul>
         <li 
             class="suggestion"
             *ngFor="let sug of suggestions" 
-            (click)="navigateDetail(sug?.name, sug)">
-            {{sug|json}}
+            (click)="navigateDetail(evaluatedNavString(sug.url), { 
+                url:sug.url, 
+                imageUrl: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/'+
+                pad(xtract(sug.url))+'.png'
+            })">
+            <h2>{{sug.name|uppercase}}</h2>
+            <img
+            width="20%"
+            src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/{{pad(xtract(sug.url))}}.png">
         </li>
     </ul>
 </div>

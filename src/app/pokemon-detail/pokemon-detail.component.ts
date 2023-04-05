@@ -25,7 +25,10 @@ export class PokemonDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.browserRefresh = browserRefresh;
-    if(this.browserRefresh) {//on browser refresh
+    if(this.browserRefresh
+      && window.localStorage.getItem('pokemonUrlData') as string
+      && window.localStorage.getItem('pokemonDetails') as string
+      ) {//on browser refresh
       this.data=JSON.parse(
        window.localStorage.getItem('pokemonUrlData') as string
      );

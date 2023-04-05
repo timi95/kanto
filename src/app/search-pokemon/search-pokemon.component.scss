@@ -9,22 +9,43 @@ input{
 input::placeholder{
     text-align: center;
     font-size: 1.2rem;
+    transition: all 0.4s;
 }
 input:focus::placeholder{
     color: transparent;
-    transition: 0.4s;
+    transition: all 0.4s;
+}
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+  appearance: none;
 }
 
 div.suggestion-container{
+    position: fixed;
     z-index: 10;
+    top:70px;
+    right:20%;
+    // margin: -1px;
+    ul::-webkit-scrollbar{
+        display: hidden;
+    }
     ul{
-        position: relative;
         list-style: none;
+        overflow-y: auto;
+
+        height: 300px;
         li.suggestion{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #fff;
             outline: 1px solid grey;
-            padding: 20px;
+            // padding: 20px;
             border-radius: 15px;
             margin-top: 5px;
+            border-bottom: 1px solid grey;
         }
     }
 }
