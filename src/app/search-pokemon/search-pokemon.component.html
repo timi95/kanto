@@ -3,13 +3,16 @@ type="search"
 name="search" 
 id="searchPokemon"
 placeholder="Search Pokemon"
-(submit)="searchPokemon($event)">
+#input>
 
-<div *ngIf="isSuggesting">
+<div class="suggestion-container" *ngIf="isSuggesting">
     Suggesting...
     <ul>
-        <li *ngFor="let sug of suggestions" 
-        (click)="navigateDetail(sug?.name, sug)"></li>
+        <li 
+            class="suggestion"
+            *ngFor="let sug of suggestions" 
+            (click)="navigateDetail(sug?.name, sug)">
+            {{sug|json}}
+        </li>
     </ul>
-
 </div>

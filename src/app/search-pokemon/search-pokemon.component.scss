@@ -1,5 +1,5 @@
 input{
-    min-width: 20vw;
+    min-width: 30%;
     padding: 10px;
     margin: 0 5%;
     border-radius: 15px;
@@ -8,9 +8,23 @@ input{
 }
 input::placeholder{
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 }
 input:focus::placeholder{
     color: transparent;
     transition: 0.4s;
+}
+
+div.suggestion-container{
+    z-index: 10;
+    ul{
+        position: relative;
+        list-style: none;
+        li.suggestion{
+            outline: 1px solid grey;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 5px;
+        }
+    }
 }
