@@ -6,3 +6,11 @@ input{
     border-top-left-radius: 50px;
     border-bottom-right-radius: 50px;
 }
+input::placeholder{
+    text-align: center;
+    font-size: 1.5rem;
+}
+input:focus::placeholder{
+    color: transparent;
+    transition: 0.4s;
+}
