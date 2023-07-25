@@ -26,7 +26,7 @@ export class SearchPokemonComponent implements OnInit, AfterViewInit {
                 debounceTime(1100),
                 distinctUntilChanged()
                 ).subscribe(()=>{
-              this.giveSuggestions(this.input.nativeElement.value)
+              this.giveSuggestions((this.input.nativeElement.value as string).toLowerCase())
             });
   }
 
